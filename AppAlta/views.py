@@ -8,4 +8,6 @@ def inicio (request):
 def nosotros (request):
     return render (request, "nosotros.html")
 
+def portfolio (request):
+    return render (request, "portfolio.html")
 
