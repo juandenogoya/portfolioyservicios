@@ -11,3 +11,8 @@ def nosotros (request):
 def portfolio (request):
     return render (request, "portfolio.html")
 
+def equipo (request):
+    return render (request, "equipo.html"),
+
+
+
