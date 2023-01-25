@@ -4,20 +4,32 @@
 
 {% block titulo %}
 
-<h1> INICIO </h1>
+<h1> INGRESO </h1>
 {% endblock %}
 
 {% block subtitulo %}
-<span> PORTFOLIO TRABAJO y SERVICIOS </span>
+<span>  </span>
 
 {% endblock %}
 
+<h3> {{ mensaje }}  </h3>
+
 {% block contenido_que_cambia %}
 
+<form action ="{% url 'login' %}" method="POST"> {% csrf_token %}
+
+<table>
+
+    
+    {{ form.as_table }}
 
 
+</table>
 
-<h1> {{ mensaje }}</h1>
+    <input type = "submit" value="INGRESAR">
+
+</form>
+
 
 
 {% endblock %}
