@@ -1,0 +1,47 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1> PORTFOLIO </h1>
+{% endblock %}
+
+{% block subtitulo %}
+<span> Experiencia </span>
+
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+
+
+Esto es lo que estamos haciendo... !!!!
+
+
+<h1> {{ mensaje }}</h1>
+
+
+{% endblock %}
+
+{% block contenido_que_cambia_2 %}
+
+<img src= "{{ avatar }}" alt="">
+
+<ul>
+
+    {% for prospecto in empresaServicio %}
+    <li>{{ empresaServicio.razonSocial }} - {{ empresaServicio.cuit }} </li>
+
+    <a class =" btn btn.success" href=""> Editar </a>
+    <a class =" btn btn.danger" href=""> Eliminar </a>
+
+    {% endfor %}
+
+
+</ul>
+    
+
+
+{% endblock %}
+

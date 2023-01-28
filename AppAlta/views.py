@@ -18,8 +18,8 @@ def inicio (request):
 def nosotros (request):
     return render (request, "nosotros.html")
 
-def portfolio (request):
-    return render (request, "portfolio.html")
+def prospectos (request):
+    return render (request, "prospectos.html")
 
 def equipo (request):
     return render (request, "equipo.html")
@@ -77,3 +77,61 @@ def login_usuario (request):
         form = AuthenticationForm()
         return render (request, "login.html", {"form": form})
 
+@login_required
+def editarPerfil (request):
+    usuario = request.user
+
+    if request.method == "POST":
+        form = UserEditForm (request.POST)
+        if form.is_valid():
+            info = form.cleaned_data
+            usuario.email = info ["email"]
+            usuario.password1 = info ["password1"]
+            usuario.password2 = info ["password2"]
+            usuario.first_name = info ["first_name"]
+            usuario.last_name = info ["last_name"]
+            usuario.save()
+            return render (request, "inicio.html", {"mensaje": f"Usuario {usuario.username} Actualizado"})
+        else:
+            return render (request, "editarPerfil.html", {"form": form, "nombreusuario": usuario.username})
+
+    else:
+        form = UserEditForm (instance= usuario)
+        return render (request, "editarPerfil.html", {"form": form, "nombreusuario": usuario.username}) 
+
+@login_required
+def prospectoForm (request):
+    if request.method == "POST":
+        form = EmpresaFormulario(request.POST)
+        if form.is_valid():
+            informacion = form.cleaned_data
+            razonSocial = informacion ["razonSocial"]
+            cuit = informacion ["cuit"]
+            email = informacion ["email"]
+            telefono = informacion ["telefono"]
+            direccion = informacion ["direccion"]
+            prospecto = EmpresaServicio (razonSocial = razonSocial, cuit=cuit, email = email, telefono = telefono, direccion = direccion)
+            prospecto.save()
+            return render (request, "inicio.html", {"mensaje": "Prospecto Guardado"})
+        else:
+            return render (request, "prospectoForm.html", {"form": form, "mensaje": "Error al Cargar Empresa - Reintentar"})
+    else:
+        formulario = EmpresaFormulario()
+        return render (request, "prospectoForm.html", {"form": formulario})
+
+
+
+def prospectoLeer (request):
+
+    prospecto = EmpresaServicio.objects.all()
+
+    lista = Avatar.objects.filter(user=request.user)
+    if len(lista)!=0:
+        avatar= lista [0].imagen.url
+    else: 
+        avatar = "/media/avatars/default.png"
+    
+    return render (request, "prospectos.html", {"prospecto": prospecto, "avatar": avatar})
+
+def prospectoBuscar (request):
+    pass
