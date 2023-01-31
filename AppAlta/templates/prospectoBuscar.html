@@ -4,33 +4,25 @@
 
 {% block titulo %}
 
-<h1> Buscar Prospecto </h1>
+<h1> Buscar Empresas </h1>
 {% endblock %}
 
 {% block subtitulo %}
-<span>  </span>
+<span> Historicos </span>
 
 {% endblock %}
 
-<h3> {{ mensaje }}  </h3>
-
 {% block contenido_que_cambia %}
 
-<form action ="{% url 'prospectoBuscar' %}" method="POST"> {% csrf_token %}
+<h3> {{ mensaje }} </h3>
 
-<table>
+<form action="{% url 'buscar' %}" method ="GET"> {% csrf_token %}
 
-    
-    {{ form.as_table }}
+    <input type = "text", name = "empresa" placeholder="EMPRESA">
 
-
-</table>
-
-    <input type = "submit" value="Alta Prospecto">
+    <input type = "submit", value = "BUSCAR">
 
 </form>
-
-
 
 {% endblock %}
 
@@ -39,4 +31,3 @@
 
 
 {% endblock %}
-

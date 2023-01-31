@@ -105,12 +105,12 @@ def prospectoForm (request):
         form = EmpresaFormulario(request.POST)
         if form.is_valid():
             informacion = form.cleaned_data
-            razonSocial = informacion ["razonSocial"]
+            empresa = informacion ["empresa"]
             cuit = informacion ["cuit"]
             email = informacion ["email"]
             telefono = informacion ["telefono"]
             direccion = informacion ["direccion"]
-            prospecto = EmpresaServicio (razonSocial = razonSocial, cuit=cuit, email = email, telefono = telefono, direccion = direccion)
+            prospecto = EmpresaServicio (empresa = empresa, cuit=cuit, email = email, telefono = telefono, direccion = direccion)
             prospecto.save()
             return render (request, "inicio.html", {"mensaje": "Prospecto Guardado"})
         else:
@@ -120,18 +120,20 @@ def prospectoForm (request):
         return render (request, "prospectoForm.html", {"form": formulario})
 
 
-
-def prospectoLeer (request):
-
-    prospecto = EmpresaServicio.objects.all()
-
-    lista = Avatar.objects.filter(user=request.user)
-    if len(lista)!=0:
-        avatar= lista [0].imagen.url
-    else: 
-        avatar = "/media/avatars/default.png"
-    
-    return render (request, "prospectos.html", {"prospecto": prospecto, "avatar": avatar})
-
 def prospectoBuscar (request):
-    pass
+    return render (request, "prospectoBuscar.html")
+
+def buscar (request):
+    empresa = request.GET ['empresa']
+    if empresa!="":
+        prospecto = EmpresaServicio.objects.filter(empresa__icontains= empresa)
+        return render (request, "resultadoBuscar.html", {"prospecto": prospecto})
+    else:
+        return render (request, "prospectoBuscar.html", {"mensaje": "Ingresar Empresa"})
+
+def prospectoMostrar (request):
+    prospecto = EmpresaServicio.objects.all()
+    return render (request, "prospectos.html", {"prospecto": prospecto})
+
+
+    

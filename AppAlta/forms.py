@@ -40,7 +40,7 @@ class UserEditForm (UserCreationForm):
 
 
 class EmpresaFormulario (forms.Form):
-    razonSocial = forms.CharField (label= "Razon Social", max_length=50)
+    empresa = forms.CharField (label= "Razon Social", max_length=50)
     cuit = forms.IntegerField (label= "CUIT")
     email = forms.EmailField(label="Email")
     telefono =  forms.IntegerField(label = "Telefono")

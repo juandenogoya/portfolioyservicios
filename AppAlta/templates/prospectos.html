@@ -4,44 +4,30 @@
 
 {% block titulo %}
 
-<h1> PORTFOLIO </h1>
+<h1> PROSPECTOS </h1>
 {% endblock %}
 
 {% block subtitulo %}
-<span> Experiencia </span>
+<span> Empresas a Analizar </span>
 
 {% endblock %}
 
 {% block contenido_que_cambia %}
 
+    {% for prospectos in prospectos %}
+    <li>
+        {{ prospectos.razonSocial }} - {{ prospectos.mail }} - {{ prospectos.telefono }}
+    </li>
+    
+    {% endfor %}
 
-
-Esto es lo que estamos haciendo... !!!!
-
-
-<h1> {{ mensaje }}</h1>
+<h3> {{ mensaje }} </h3>
 
 
 {% endblock %}
 
 {% block contenido_que_cambia_2 %}
 
-<img src= "{{ avatar }}" alt="">
-
-<ul>
-
-    {% for prospecto in empresaServicio %}
-    <li>{{ empresaServicio.razonSocial }} - {{ empresaServicio.cuit }} </li>
-
-    <a class =" btn btn.success" href=""> Editar </a>
-    <a class =" btn btn.danger" href=""> Eliminar </a>
-
-    {% endfor %}
-
-
-</ul>
-    
 
 
 {% endblock %}
-

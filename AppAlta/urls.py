@@ -18,8 +18,9 @@ urlpatterns = [
 
 
     path ('prospectoForm/', prospectoForm, name = 'prospectoForm'),
-    path ('prospectoLeer/', prospectoLeer, name= 'prospectoLeer'),
+    path ('prospectoLeer/', prospectoMostrar, name= 'prospectoLeer'),
     path ('prospectoBuscar/', prospectoBuscar, name = 'prospectoBuscar'),
+    path ('buscar/', buscar, name = 'buscar'),
 
 
 

@@ -13,7 +13,7 @@ class Contacto (models.Model):
     mensaje = models.CharField(max_length=2000)
 
     def __str__(self):
-        return self.nombre, self.apellido, self.email
+        return f"{self.nombre} - {self.apellido} - {self.email}"
 
 
 class Avatar (models.Model):
@@ -26,13 +26,13 @@ class ImagenEquipo (models.Model):
 
 
 class EmpresaServicio (models.Model):
-    razonSocial = models.CharField(max_length=50)
+    empresa = models.CharField(max_length=50)
     cuit = models.IntegerField()
     email = models.EmailField()
     telefono = models.IntegerField()
     direccion = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.razonSocial, self.cuit   
+        return f"{self.empresa} - {self.cuit}"  
 
 
