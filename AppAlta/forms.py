@@ -1,15 +1,22 @@
 from django import forms
+from .models import *
+
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-class ContactoFormulario (forms.Form):
+class ContactoFormulario (forms.ModelForm):
     nombre = forms.CharField (label= "Nombre", max_length=50)
     apellido = forms.CharField (label= "Apellido", max_length=50)
     email = forms.EmailField(label="Email")
     telefono =  forms.IntegerField(label = "Telefono")
     mensaje = forms.CharField(label = "Mensaje", max_length=2000)
+
+    class Meta:
+        model = Contacto
+        fields = ('nombre', 'apellido', 'email', 'telefono', 'mensaje')
+    
 
 
 class RegistroUsuarioForm (UserCreationForm):

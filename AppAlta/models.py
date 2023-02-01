@@ -13,7 +13,7 @@ class Contacto (models.Model):
     mensaje = models.CharField(max_length=2000)
 
     def __str__(self):
-        return f"{self.nombre} - {self.apellido} - {self.email}"
+        return f"{self.nombre} - {self.apellido} - {self.email} - {self.telefono}"
 
 
 class Avatar (models.Model):

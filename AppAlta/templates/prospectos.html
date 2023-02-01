@@ -4,22 +4,28 @@
 
 {% block titulo %}
 
-<h1> PROSPECTOS </h1>
+<h1> PROPECTAR </h1>
 {% endblock %}
 
 {% block subtitulo %}
-<span> Empresas a Analizar </span>
+<span>  </span>
 
 {% endblock %}
 
 {% block contenido_que_cambia %}
 
-    {% for prospectos in prospectos %}
-    <li>
-        {{ prospectos.razonSocial }} - {{ prospectos.mail }} - {{ prospectos.telefono }}
-    </li>
+<h3> Listado Empresas a Analizar </h3>
+
+<ul>
+
+    {% for empresaServicio in prospecto %}
     
+    <li> {{ empresaServicio.empresa }} - {{ empresaServicio.mail }} - {{ empresaServicio.telefono }} - {{ empresaServicio.cuit }} </li>
+     
     {% endfor %}
+
+
+</ul>
 
 <h3> {{ mensaje }} </h3>
 
