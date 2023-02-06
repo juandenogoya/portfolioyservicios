@@ -119,10 +119,11 @@ def prospectoForm (request):
         formulario = EmpresaFormulario()
         return render (request, "prospectoForm.html", {"form": formulario})
 
-
+@login_required
 def prospectoBuscar (request):
     return render (request, "prospectoBuscar.html")
 
+@login_required
 def buscar (request):
     empresa = request.GET ['empresa']
     if empresa!="":
@@ -131,6 +132,7 @@ def buscar (request):
     else:
         return render (request, "prospectoBuscar.html", {"mensaje": "Ingresar Empresa"})
 
+@login_required
 def prospectoMostrar (request):
     prospecto = EmpresaServicio.objects.all()
     return render (request, "prospectos.html", {"prospecto": prospecto})

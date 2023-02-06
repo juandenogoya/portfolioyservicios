@@ -28,8 +28,26 @@
 
 {% for prospecto in prospecto %}
 
-<h3> {{ prospecto.empresa }} - {{ prospecto.cuit }} - {{ prospecto.telefono }}</h3>
-
+<table>
+    <tr>
+        <td><strong>Razon Social : </strong></td> 
+            <td>
+                {{ prospecto.empresa }}
+            </td>
+    </tr>
+    <tr>
+        <td><strong>CUIT : </strong></td>
+            <td>
+                {{ prospecto.cuit }}
+            </td>
+    </tr>
+    <tr>
+        <td><strong>Contacto : </strong></td>
+            <td>
+                {{ prospecto.telefono }}
+            </td>
+    </tr>
+</table>
 {% endfor %}
 
 {% else %}

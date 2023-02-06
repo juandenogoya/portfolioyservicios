@@ -4,7 +4,7 @@
 
 {% block titulo %}
 
-<h1> PROPECTAR </h1>
+<h1> VER TODOS LOS MENSAJES </h1>
 {% endblock %}
 
 {% block subtitulo %}
@@ -14,26 +14,26 @@
 
 {% block contenido_que_cambia %}
 
-<h3> Listado Empresas a Analizar </h3>
+<h3> TODOS LOS MENSAJES </h3>
 
-    {% for empresaServicio in prospecto %}
+    {% for texto_msj in titulo %}
     <table>
         <tr>
-            <td><strong>Razon Social : </strong></td> 
+            <td><strong>Asunto : </strong></td> 
                 <td>
-                    <strong> {{ empresaServicio.empresa }}</strong>
+                    <strong> {{ texto_msj.titulo }}</strong>
                 </td>
         </tr>
         <tr>
-            <td><strong>CUIT : </strong></td>
+            <td><strong>Fecha : </strong></td>
                 <td>
-                    {{ empresaServicio.cuit }}
+                    {{ texto_msj.fecha }}
                 </td> 
         </tr>
         <tr>
             <td><strong>Contacto : </strong></td>
                 <td>
-                    {{ empresaServicio.telefono }}
+                    {{ texto_msj.telefono }}
                 </td>
         </tr>
         

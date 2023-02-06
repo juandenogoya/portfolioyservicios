@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'AppAlta',
+    'AppMensajeria',
 
     
 ]
@@ -129,9 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_REDIRECT_URL = '/AppAlta/inicio/'
 LOGIN_REDIRECT_URL = '/AppAlta/login/'
 
-# Para poder cargar Imagenes desde Formularios
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 

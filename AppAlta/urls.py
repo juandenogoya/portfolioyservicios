@@ -22,6 +22,4 @@ urlpatterns = [
     path ('prospectoBuscar/', prospectoBuscar, name = 'prospectoBuscar'),
     path ('buscar/', buscar, name = 'buscar'),
 
-
-
 ]
