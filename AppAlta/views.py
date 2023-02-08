@@ -138,4 +138,32 @@ def prospectoMostrar (request):
     return render (request, "prospectos.html", {"prospecto": prospecto})
 
 
+def eliminarProspecto (request, id):
+    prospecto = EmpresaServicio.objects.get(id=id)
+    prospecto.delete()
+    prospecto = EmpresaServicio.objects.all()
+    return render (request, "prospectos.html", {"prospecto": prospecto, "mensaje": "Empresa a Prospectar Eliminada"})
+
+def editarProspecto (request, id):
+    prospecto = EmpresaServicio.objects.get(id=id)
+    if request.method== "POST":
+        form = EmpresaFormulario(request.POST)
+        if form.is_valid():
+            info= form.cleaned_data
+            prospecto.empresa = info ["empresa"]
+            prospecto.cuit = info ["cuit"]
+            prospecto.email = info ["email"]
+            prospecto.telefono = info ["telefono"]
+            prospecto.direccion = info ["direccion"]
+            prospecto.save()
+            prospecto = EmpresaServicio.objects.all()
+            return render ( request, "prospectos.html", { "prospecto": prospecto, "mensaje": "Datos Actualizados"})
+        pass
+    else:
+        form = EmpresaFormulario (initial= {"empresa": prospecto.empresa, "cuit": prospecto.cuit, "email": prospecto.email, "telefono": prospecto.telefono, "direccion": prospecto.direccion})
+        return render (request, "editarProspecto.html", {"form": form, "prospecto": prospecto })
+
+
+
+
     

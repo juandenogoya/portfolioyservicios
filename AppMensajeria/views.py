@@ -32,3 +32,11 @@ def verMensajes (request):
     titulo = Mensajeria.objects.all()
     return render (request, 'verMensajes.html', {'titulo': titulo})
 
+
+def borrarMensaje (request, id):
+    texto_msj= Mensajeria.objects.get(id=id)
+    texto_msj.delete()
+    texto_msj= Mensajeria.objects.all()
+    return render (request, "inicio.html", {"texto_msj": texto_msj, "mensaje": "Mensaje Borrado"})
+
+

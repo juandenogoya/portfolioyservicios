@@ -1,0 +1,42 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1> EDICION DE PROSPECTO </h1>
+{% endblock %}
+
+{% block subtitulo %}
+<span> Corrigiendo Errores de Carga - {{ prospecto.empresa }} </span>
+
+{% endblock %}
+
+<h3> {{ mensaje }}  </h3>
+
+{% block contenido_que_cambia %}
+
+<form action ="{% url 'editarProspecto' prospecto.id %}" method="POST"> {% csrf_token %}
+
+<table>
+
+    
+    {{ form.as_table }}
+
+
+</table>
+
+    <input class="btn btn-outline-info" type = "submit" value="Guardar Cambios">
+
+</form>
+
+
+
+{% endblock %}
+
+{% block contenido_que_cambia_2 %}
+
+
+
+{% endblock %}
+

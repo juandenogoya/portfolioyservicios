@@ -21,5 +21,8 @@ urlpatterns = [
     path ('prospectoMostrar/', prospectoMostrar, name= 'prospectoMostrar'),
     path ('prospectoBuscar/', prospectoBuscar, name = 'prospectoBuscar'),
     path ('buscar/', buscar, name = 'buscar'),
+    path ('eliminarProspecto/<id>', eliminarProspecto, name = 'eliminarProspecto'),
+    path ('editarProspecto/<id>', editarProspecto, name = 'editarProspecto'),
+
 
 ]

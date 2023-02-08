@@ -5,6 +5,7 @@
 {% block titulo %}
 
 <h1> PROPECTAR </h1>
+<h3> Listado Empresas a Analizar </h3>
 {% endblock %}
 
 {% block subtitulo %}
@@ -14,7 +15,9 @@
 
 {% block contenido_que_cambia %}
 
-<h3> Listado Empresas a Analizar </h3>
+
+
+<h4> {{ mensaje }} </h4>
 
     {% for empresaServicio in prospecto %}
     <table>
@@ -38,13 +41,20 @@
         </tr>
         
     </table>
-    
+</table>
+    <ul>
+        <a class="btn btn-outline-danger" href="{% url 'eliminarProspecto' empresaServicio.id %}">Eliminar</a>
+        <a class="btn btn-outline-success" href="{% url 'editarProspecto' empresaServicio.id %}">Editar</a>
+    </ul>
+
+</form>
+
     {% endfor %}
 
 
 
 
-<h3> {{ mensaje }} </h3>
+
 
 
 {% endblock %}
